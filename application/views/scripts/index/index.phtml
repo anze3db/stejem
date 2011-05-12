@@ -1,0 +1,45 @@
+<?php if(!$this->logged): ?>
+<div id="register" class="round">
+    REGISTRACIJA:
+    <?php echo $this->registerForm;?>
+    <a href="/uporabnik/geslo/" title="Sploh ni panike!">Si pozabil geslo?</a>
+</div>
+<?php endif ?>
+<h1>TODO:</h1><ul>
+    <li class="done">login/logut</li>
+    <li class="done">register</li>
+    <li class="done">dodajanje službe</li>
+    <li class="done">dodajanje dela</li>
+    <li class="done">obračun dela</li>
+    <li class="done">prerosta obdelava napak</li>
+    <li class="done">prijava hroščev in predlogi uporabnikov</li>
+    <li class="done">dodajanje dela v realnem času</li>
+    <li class="done">boljši interface (vnašanje ure, datuma)</li>
+    <li class="done">izboljšave služb (izbiranje default ure prihoda, odhoda, spreminjanje tarife)</li>
+    <li class="done">možnost vnosa večih služb</li>
+    <li class="done">dizajn(IE kompatibilnost)</li>
+    <li class="done">loči službe od dela</li>
+    <li class="done">loči obračun od dela</li>
+    <li class="done">primarna služba - boljše urejanje dodajanje služb</li>
+    <li class="done">urejanje dela(spreminjanje datuma, časa, tarife)</li>
+    <li class="done">obračun za posamezno leto</li>
+    <li class="done">napredna obdelava napak</li>
+    <li class="done">predstavitev strani in navodila za registracijo ter uporabo</li>
+    <li class="done">psyg bug</li>
+    <li class="done">izgubljeno geslo</li>
+    <li>odstrani ta todo</li>
+    <li>design (logo)</li>
+    <li>stran za mobilne telefone</li>
+    <!--
+    <li>projektno delo</li>
+    <li>beleženje opravil (taskov) pri vnosu dela</li>
+    -->
+    <li>urnik dela</li>
+    <li>avtomatičen začetek dela</li>
+    <li>izvoz dela</li>
+    
+</ul><br />
+
+<h1>Zadnji blog:</h1>
+<?php echo $this->partial('blog/blog.phtml', $this->blogs[0]); ?>
+<a href ="<?php echo $this->url(array('controller'=>'blog'));?>" title="Vsako mnenje šteje">Komentiraj &gt;&gt;</a>

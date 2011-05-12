@@ -1,0 +1,32 @@
+<form method="post" accept-charset="UTF-8" action="addclearance" enctype="application/x-www-form-urlencoded">    
+<table>
+
+<tr>
+    <th class="last"><input type="checkbox" id="checkAll" title="Izberi vse" checked="checked" /></th>
+    <th>Datum</th>
+    <th>Ura prihoda</th>
+    <th>Ura odhoda</th>
+    <th>Čas dela</th>
+    <th>Zaslužek</th>
+    <th class="last"></th>
+</tr>
+<?php foreach($this->work as $dela) : ?>
+<tr>
+    <td class="left"><input type="checkbox" name="stat[]" value="<?php echo $dela['id'];?>" checked="checked" class="check"  /></td>
+    <td title="<?php echo ($dela['date_added']);?>"><?php echo $this->dateFormat($dela['date']);?></td>
+    <td><?php echo $this->timeFormat($dela['start_time']);?></td>
+    <td><?php echo $this->timeFormat($dela['end_time']);?></td>
+    <td><?php echo $this->timeFormat($dela['difference']);?></td>
+    <td><?php echo $this->currencyFormat($dela['earnings']);?></td>
+    <td><a href="<?php echo $this->url(array('controller'=>'delo',
+            'action'=>'deletework', 'id'=>$dela['id']));?>"  class="zbrisi"></a></td>
+</tr>
+<?php endforeach; ?>
+<tr class="last">
+    <td colspan="3" class="left">∟<input type="submit" value="Obračunaj izbrane" /></td>
+    <td></td>
+    <td class="vsota">Σ: <?php echo ($this->sum_work) ?></td>
+    <td class="vsota">Σ: <?php echo $this->currencyFormat($this->sum_earnings) ?></td>
+</tr>
+</table>
+</form>

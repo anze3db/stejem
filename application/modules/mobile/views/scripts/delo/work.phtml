@@ -1,0 +1,26 @@
+<table>
+
+<tr>
+    <th>Datum</th>
+    <th>Prihod</th>
+    <th>Odhod</th>
+    <th>Zaslužek</th>
+    <th class="last"></th>
+</tr>
+<?php
+
+foreach($this->work as $dela) : ?>
+<tr>
+    <td title="<?php echo ($dela['date_added']);?>"><?php echo substr($this->dateFormat($dela['date']), 0, -5);?></td>
+    <td><?php echo $this->timeFormat($dela['start_time']);?></td>
+    <td><?php echo $this->timeFormat($dela['end_time']);?></td>
+    <td class="right"><?php echo $this->currencyFormat($dela['earnings']);?></td>
+
+    <td><a href="<?php echo $this->url(array('controller'=>'delo',
+            'action'=>'uredi', 'id'=>$dela['id']));?>" class="uredi" title="Uredi"></a><a href="<?php echo $this->url(array('controller'=>'delo',
+            'action'=>'deletework', 'id'=>$dela['id']));?>"  class="zbrisi" title="Izbriši"></a></td>
+</tr>
+<?php endforeach; ?>
+
+</table>
+

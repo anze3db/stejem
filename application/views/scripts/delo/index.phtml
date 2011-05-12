@@ -1,0 +1,17 @@
+<?php if(empty($this->jobs)): ?>
+<h1>Očitno še nisi dodal nobene službe, tako da še ne moreš dodajat delo.</h1>
+<?php else: ?>
+<h1>Dodaj delo</h1>
+<div id="addjob"><?php echo $this->jobForm; ?></div>
+<?php echo $this->workForm ?>
+<?php if(is_array($this->activeWork)): ?>
+
+<div id="startedTime" class="hide"><?php echo $this->activeWork["date"] . " " . $this->activeWork["now"] . "," . $this->activeWork["date"] . " " . $this->activeWork["start_time"] . "," . $this->activeWork["wage"] ?></div>
+<?php endif; ?>
+<?php endif; ?>
+<?php if(!empty($this->work['work'])): ?>
+<h1>Pregled dela</h1>
+<?php echo $this->partial('delo/work.phtml', $this->work) ?>
+
+<?php endif; ?>
+

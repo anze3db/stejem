@@ -1,0 +1,24 @@
+<?php echo $this->paginationControl($this->blogs,
+                                    'Sliding',
+                                    'pagination.phtml'); ?>
+
+<?php echo $this->partialLoop('feedback/blog.phtml', $this->blogs->getCurrentItems()); ?>
+
+<div class = "feedback">
+<?php  foreach ($this->feedback as $fb): ?>
+    <div class="item">
+    <div class="posted">
+    <div class="time"><?php echo substr($fb['added'], 11, 2) . ":" . substr($fb['added'], 14, 2)?></div>
+    <div class="day"><?php echo substr($fb['added'], 8, 2).". ".substr($fb['added'], 5, 2) . ". ". substr($fb['added'], 2, 2)  ?></div>
+    </div>
+    <div class="body <?php if($fb['admin']==1) echo ' admin';?>">
+    <div class="title"><?php if($fb['website']) echo '<a href="'.$fb['website'].'">'.$fb['name'].'</a>'; else echo $fb['name']; ?> pravi:</div>
+    <?php echo $fb['feedback']?>
+    
+    </div>	
+    </div>
+    
+<?php endforeach?>
+    
+</div>
+<?php echo $this->feedbackForm; ?>

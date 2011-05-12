@@ -1,0 +1,31 @@
+<?php
+    #get current controller:
+$request = Zend_Controller_Front::getInstance()->getRequest();
+$controller = $request->getControllerName();
+
+?>
+
+<ul>
+<li><a href="/"<?php if($controller == 'index') echo ' class="curr"'?>>domov</a></li>
+<?php if($this->loggedIn()): ?>
+<li><a href="/sluzbe"<?php if($controller == 'sluzbe') echo ' class="curr"'?>>službe</a></li>
+<?php if($this->hasJob()): ?>
+<li><a href="/delo"<?php if($controller == 'delo') echo ' class="curr"'?>>delo</a></li>
+<?php else: ?>
+<li title="Za dostop do dela najprej potrebuješ službo!">delo</li>
+<?php endif ?>
+<?php if($this->hasJob()): ?>
+<li><a href="/obracun"<?php if($controller == 'obracun') echo ' class="curr"'?>>obračun</a></li>
+<?php else: ?>
+<li title="Za dostop do obračuna najprej potrebuješ službo!">obračun</li>
+<?php endif ?>
+<?php else: ?>
+<li title="Za dostop se moraš prijavit!">službe</li>
+<li title="Za dostop se moraš prijavit!">delo</li>
+<li title="Za dostop se moraš prijavit!">obračun</li>
+<?php endif; ?>
+<li><a href="/blog"<?php if($controller == 'blog') echo ' class="curr"'?>>blog</a></li>
+<?php if($this->loggedIn(1)):?>
+<li><a href="/admin"<?php if($controller == 'admin') echo ' class="curr"'?>>admin</a></li>
+<?php endif ?>
+</ul>

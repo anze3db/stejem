@@ -1,0 +1,11 @@
+<div class="blog">
+<div class="posted">
+<div class="time"><?php echo substr($this->date, 11, 2). ":" .substr($this->date, 14, 2) ?> </div>
+<div class="day"><?php echo substr($this->date, 5, 2).". ".substr($this->date, 8, 2) . ". " . substr($this->date, 2, 2)?></div>
+</div>
+<div class="body">
+<div class="title"><b><?php echo $this->title?></b></div>
+<?php echo nl2br($this->content); ?>
+</div>
+    <div style="clear:left"></div>
+</div>

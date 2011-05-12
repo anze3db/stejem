@@ -1,0 +1,49 @@
+<h1>Uporabniki:</h1>
+<table>
+<thead>
+<tr>
+<th>Uporabnik</th>
+<th>Trenutno dela</th>
+<th>Delovnih ur</th>
+<th>Zaslužek</th>
+<th class="last">Podrobnosti</th>
+</tr>
+</thead>
+<tbody>
+
+<?php foreach($this->users as $user): ?>
+    <tr>
+    <td><?php echo $user["mail"]?></td>
+    <td><?php if ($user["active"]) echo $user["start_time"]?> </td>
+    <td><?php echo $user['sum_work']?></td> 
+    <td><?php echo $this->currencyFormat($user["sum_earnings"])?></td>
+    <td><a href="<?php echo $this->url(array('action'=>'user','id'=>$user['id'])); ?>">podrobnosti</a></td>
+    </tr>
+<?php endforeach ?>
+
+</tbody>
+</table>
+<h1>Blogi:</h1>
+<table>
+<thead>
+<tr>
+<th>Napisal</th>
+<th>Objavleno</th>
+<th>Naslov</th>
+<th  class="last">Akcije</th>
+</tr>
+</thead>
+<tbody>
+
+<?php foreach($this->blogs as $blog): ?>
+    <tr>
+    <td><?php echo $blog["name"]?></td>
+    <td><?php echo $blog["date"]?></td>
+    <td><?php echo $blog['title']?></td>
+    <td><a href="<?php echo $this->url(array('controller'=>'admin', 'action'=>'blog', 'id'=>$blog['id']));?>" title="Uredi blog">Uredi</a>&nbsp;<a href="<?php echo $this->url(array('controller'=>'admin', 'action'=>'deleteblog', 'id'=>$blog['id']));?>" title="Izbriši">Izbriši</a></td>
+    </tr>
+<?php endforeach ?>
+
+</tbody>
+</table>
+<a href="<?php echo $this->url(array('controller'=>'admin', 'action'=>'blog'))?>" title="Dodaj nov blog">Dodaj</a>

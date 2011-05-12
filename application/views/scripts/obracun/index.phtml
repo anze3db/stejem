@@ -1,0 +1,14 @@
+<?php if(!empty($this->years)): ?>
+<?php if(!empty($this->clearance['clearance'])): ?>
+<h1>Obračun za leto <?php echo $this->year ?></h1>
+<?php echo $this->partial('obracun/clearance.phtml', $this->clearance) ?>
+<?php else: ?>
+<h1>V letu <?php echo $this->year ?> še ni bilo nobenega obračuna.</h1>
+<?php endif?>
+Pokaži obračun za leto 
+<?php foreach($this->years as $year): ?>
+<a href="/obracun/index/pokazi/<?php echo $year; ?>"><?php echo $year; ?></a>
+<?php endforeach;?>
+<?php else: ?>
+<h1>Noben obračun še ni bil dodan.</h1>
+<?php endif?>

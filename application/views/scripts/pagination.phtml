@@ -1,0 +1,17 @@
+<?php if (isset($this->next)): ?>
+<div class="older">
+  <a href="<?php echo $this->url(array('stran' => $this->next)); ?>">
+    &lt;&lt; Starejši
+  </a>
+</div>
+<?php endif; ?>
+<?php if (isset($this->previous)): ?>
+<div class="newer">
+  <a href="<?php echo $this->url(array('stran' => $this->previous)); ?>">
+    Novejši &gt;&gt;
+  </a>
+</div>
+<?php endif; ?>
+
+
+

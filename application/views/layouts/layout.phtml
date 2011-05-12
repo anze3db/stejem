@@ -1,0 +1,59 @@
+<?php echo $this->doctype(); ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<?php echo $this->headMeta()."\n"; ?>
+<?php echo $this->headTitle()."\n"; ?>
+<?php echo $this->headLink()//->appendStylesheet($this->baseUrl().'/css/reset.css')
+                            ->appendStylesheet($this->baseUrl().'/css/site.css')
+                            ->appendStylesheet($this->baseUrl().'/css/ui-lightness/jquery-ui-1.7.2.custom.css')
+                            ->headLink(array('rel' => 'shortcut icon', 'href' => $this->baseUrl().'/icon.ico'))."\n";?>
+    <!--[if IE]><link href="<?php echo $this->baseUrl().'/css/iesucks.css'?>" media="screen" rel="stylesheet" type="text/css" /><![endif]-->
+<?php echo $this->headScript()/*->appendFile($this->baseUrl().'/javascript/iepngfix_tilebg.js', 'text/javascript', array('conditional' => 'lt IE 7'))*/
+                              //->appendFile('http://cdn.jquerytools.org/1.0.2/jquery.tools.min.js')
+                              ->appendFile($this->baseUrl().'/js/jquery.js', 'text/javascript')
+                              ->appendFile($this->baseUrl().'/js/jquery.ui.js', 'text/javascript')
+                              ->appendFile($this->baseUrl().'/js/ui.datepicker-sl.js', 'text/javascript')
+                              ->appendFile($this->baseUrl().'/js/jquery.tools.js', 'text/javascript')
+                              ->appendFile($this->baseUrl().'/js/jquery.epiclock.min.js', 'text/javascript')
+                              ->appendFile($this->baseUrl().'/js/functions.js', 'text/javascript');?>
+<link rel="alternate" type="application/rss+xml" title="Blog RSS" href="<?php echo $this->url(array('controller' => 'index', 'action' => 'rss'))?>" />
+</head>
+<body>
+<div class="center">
+<div id="head"><h1><a href="<?php echo $this->url(array('controller' => 'index', 'action'=>'index'))?>">štejem.si</a></h1><div id="user" class="roundDown"><?php echo $this->LoginLogout();?></div>beta7</div>
+<div id="navigation" class="roundUp left">
+<?php echo $this->partial('menu.phtml'); ?>
+<div class="rss" title="Blog RSS"><a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'rss'))?>"><img src="<?php echo $this->baseUrl() . '/images/rss.png' ?>" alt="RSS" /></a></div>
+<div style="clear:both;"></div>
+</div>
+<div class="timepicker ui-widget-content ui-corner-all">
+<table>
+<tr>
+<td><a class="ui-state-default time-update" href="#">+1</a></td><td>:</td><td><a class="ui-state-default time-update" href="#">+5</a></td>
+</tr>
+<tr>
+<td><a class="ui-state-default time-update" href="#">-1</a></td><td>:</td><td><a class="ui-state-default time-update" href="#">-5</a></td>
+</tr>
+</table>
+</div>
+<div id="content" >
+<?php echo $this->statusMessage(); ?>
+<?php echo $this->layout()->content; ?>
+</div>
+<div id="foot" class="roundDown">Anže Pečar &copy; <?php echo date("Y")?></div>
+</div>
+
+<?php if ('production' == APPLICATION_ENV): ?>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-4205070-13");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+<?php endif ?>
+
+</body>
+</html>

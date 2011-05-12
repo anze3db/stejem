@@ -1,0 +1,29 @@
+<?php if(!empty($this->jobs)): ?>
+<h1>Pregled služb</h1>
+<table>
+<thead>
+<tr>
+<th class="left">Ime službe</th>
+<th>Ura prihoda</th>
+<th>Ura odhoda</th>
+<th>Tarifa</th>
+<th class="last">Primarna</th>
+<th class="last"></th>
+</tr>
+</thead>
+<tbody>
+<?php foreach($this->jobs as $jb): ?>
+<tr>
+<td class="left"><?php echo $jb['name']?></td>
+<td><?php echo $this->timeFormat($jb['start_time']);?></td>
+<td><?php echo $this->timeFormat($jb['end_time']);?></td>
+<td class="right"><?php echo $this->currencyFormat($jb['wage'])?></td>
+<td><?php if($jb['primary']==1):?>Primarna<?php endif;?></td>
+<td><a href="<?php echo $this->url(array('action' => 'uredi', 'id'=>$jb['id']));?>" class="uredi"></a><a href="<?php echo $this->url(array('action' => 'deletejob', 'id'=>$jb['id']));?>" class="zbrisi"></a></td>
+</tr>
+<?php endforeach ?>
+</tbody>
+</table>
+<?php endif?>
+<h1>Dodaj službo</h1>
+<?php echo $this->jobForm ?>

@@ -1,0 +1,27 @@
+
+<?php echo $this->paginationControl($this->blogs,
+                                    'Sliding',
+                                    'pagination.phtml'); ?>
+
+<?php echo $this->partialLoop('blog/blog.phtml', $this->blogs->getCurrentItems()); ?>
+
+<div class = "feedback">
+
+<?php  foreach ($this->feedback as $fb): ?>
+    <div class="item">
+    <div class="posted">
+    <div class="time"><?php echo substr($fb['added'], 11, 2) . ":" . substr($fb['added'], 14, 2)?></div>
+    <div class="day"><?php echo substr($fb['added'], 8, 2).". ".substr($fb['added'], 5, 2) . ". ". substr($fb['added'], 2, 2)  ?></div>
+    </div>
+    <div class="body <?php if($fb['admin']==1) echo ' admin';?>">
+    <div class="title"><?php if($fb['user_website']) echo '<a href="'.$this->escape($fb['user_website']).'">'.$this->escape($fb['user_name']).'</a>'; else echo $this->escape($fb['user_name']); ?> pravi:</div>
+    <?php echo $fb['feedback']?>
+    <?php if($this->user && (int)$this->user->admin == 1): ?>
+    <div class="controls"><a href="<?php echo $this->url(array('action' => 'deletefeedback', 'id'=>$fb['id'])); ?>">Zbriši</a></div>
+    <?php endif; ?>
+    </div>	
+    </div>
+<?php endforeach?>
+    
+</div>
+<?php echo $this->feedbackForm; ?>

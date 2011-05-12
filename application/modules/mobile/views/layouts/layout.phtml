@@ -1,0 +1,28 @@
+<?php echo $this->doctype(); ?>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<?php echo $this->headMeta()."\n"; ?>
+<?php echo $this->headTitle()."\n"; ?>
+<?php echo $this->headLink()->appendStylesheet($this->baseUrl().'/css/reset.css')->appendStylesheet($this->baseUrl().'/css/mobile.css')
+                ->headLink(array('rel' => 'shortcut icon', 'href' => $this->baseUrl().'/icon.ico'));?>
+</head>
+<body>
+<h1>Štejem.si</h1>
+<div id="main">
+<?php echo $this->partial('menu.phtml'); ?>
+
+<?php echo $this->layout()->content; ?>
+</div>
+<?php if ('production' == APPLICATION_ENV): ?>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-4205070-13");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+<?php endif ?>
+</body>
+</html>

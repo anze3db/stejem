@@ -1,0 +1,18 @@
+<?php if(empty($this->jobs)): ?>
+<h2>Nisi dodal še nobene službe :(</h2>
+<?php else: ?>
+<?php echo $this->workActiveForm; ?>
+<?php if(is_array($this->workActive)): ?>
+<p>
+    Delati si začel ob <?php echo $this->timeFormat($this->workActive['start_time']); ?>.<br />
+    Delaš že <?php echo ($this->workActive['difference']); ?>.<br />
+    Zaslužil si <?php echo $this->currencyFormat($this->workActive['earnings']); ?>.<br />
+    <a href="/mobile/delo" title="osveži">Osveži</a>
+</p>
+<?php endif; ?>
+<?php if(!empty($this->work['work'])): ?>
+<h2>Tvoja dela:</h2>
+
+<?php echo $this->partial('delo/work.phtml', $this->work) ?>
+<?php endif; ?>
+<?php endif;?>

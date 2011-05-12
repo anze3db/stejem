@@ -1,0 +1,20 @@
+/* 
+    Document   : iesucks.css
+    Created on : 29.7.2009, 17:16:41
+    Author     : Anže
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+    display: block;
+}
+
+fieldset { position: relative;  margin:10px 0px; padding:10px; border: 0px; }
+
+legend   { position: absolute;  top: -10px; left: 5px; }

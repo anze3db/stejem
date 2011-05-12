@@ -1,0 +1,25 @@
+body                { background-color:#f7b64c; }
+
+h1                  { padding: 10px 10px; background-color: #666; color:white; }
+
+h2                  { padding: 8px 0px; }
+
+p                   {  padding:10px 10px; background-color: white; }
+
+legend              { }
+
+label               { display: block; margin: 2px 0px; }
+
+select              { margin: 2px 0px; }
+
+input               { margin: 2px 0px; }
+
+fieldset            { padding: 10px; margin:5px 0px;  background-color:#EEE;  }
+
+#main               { padding: 0px; }
+
+table              { margin: 5px 0px; border:1px dotted gray;  text-align:center; background-color: white; }
+
+th                 { padding:3px; background-color:#666; color:white;}
+
+tr:nth-child(odd)  { background-color:#eee; }
