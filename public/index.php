@@ -1,7 +1,7 @@
 <?php
 // Define path to application directory
 defined('APPLICATION_PATH')
-    || define('APPLICATION_PATH', '/home6/maleficu/applications/stejem-si/application');
+    || define('APPLICATION_PATH', getcwd() . '/../application');
 
 // Define application environment
 defined('APPLICATION_ENV')

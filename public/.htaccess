@@ -3,5 +3,6 @@ RewriteEngine on
 AddHandler application/x-httpd-php5s .php
 RewriteCond %{HTTP_HOST} ^delostejem.psywerx.net$ [OR]
 RewriteCond %{HTTP_HOST} ^www.delostejem.psywerx.net$
-RewriteRule ^/?$ "http\:\/\/stejem\.si" [R=301,L]
+RewriteRule ^/?$ "http\:\/\/stejem\.smotko\.si" [R=301,L]
+
 
