@@ -44,40 +44,27 @@
 
 	this.wage = (date.split(',')[2]/60/60/10);
 
-    var now = date.split(',')[0];
+        var now = date.split(',')[0];
 	now = now.replace(/-/g, '/');
 	date = date.split(',')[1];
 	date = date.replace(/-/g, '/');
-	
-	this.current = new Date(now);
-	this.started = new Date(date);
-	this.diff    = current - started;
 
-	this.tenth   = 0;
-	this.seconds = Math.floor(diff/1000 % 60);
-	this.minutes = Math.floor(diff/1000/60 % 60);
-	this.hours   = Math.floor(diff/1000/60/60 % 60);
-	this.earned  = Math.floor(diff/100) * wage;
+	var started = new Date(date);
+	function update(){
+		var current = new Date();
+		var diff    = current - started;
+	
+		var tenth   = Math.floor(diff/100 % 10);
+		var seconds = Math.floor(diff/1000 % 60);
+		var minutes = Math.floor(diff/1000/60 % 60);
+		var hours   = Math.floor(diff/1000/60/60 % 60);
+		var earned  = Math.floor(diff/100) * wage;
 	
 
-	setInterval(function(){
-	    tenth++;
-	    earned += wage;
-	    if(tenth>=10){
-		tenth = 0;
-		seconds++;
-	    }
-	    if(seconds >= 60){
-		seconds = 0;
-		minutes++;
-	    }
-	    if(minutes >= 60){
-		minutes = 0;
-		hours++;
-	    }
-	    
-	    $(element).html(zeroPad(hours) + ":" + zeroPad(minutes) + ":" + zeroPad(seconds) + "." + tenth + " ~= " + (Math.floor(earned*100)/100).toFixed(2) + " €");
-	}, 100);
+	    	$(element).html(zeroPad(hours) + ":" + zeroPad(minutes) + ":" + zeroPad(seconds) + "." + tenth + " ~= " + (Math.floor(earned*100)/100).toFixed(2) + " €");
+	}
+
+	setInterval(update, 100, this);
 
 	function zeroPad(num){
 	    var str = "00"+num;
