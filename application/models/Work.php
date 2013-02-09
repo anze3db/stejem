@@ -29,7 +29,7 @@ class Model_Work extends Zend_Db_Table_Abstract{
                                   )
                         )
 			->joinLeft('jobs as j', 'w.id_job = j.id', 'name')
-               ->order(array('w.date ASC', 'w.start_time ASC'))
+               ->order(array('w.id','w.date ASC', 'w.start_time ASC'))
 	       ->setIntegrityCheck(false)
                ->where('w.deleted = 0 AND w.id_clearance = 0 AND w.id_user = ? ', $id);
  

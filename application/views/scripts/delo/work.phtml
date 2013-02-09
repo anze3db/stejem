@@ -14,9 +14,29 @@
     <th class="last"></th>
 </tr>
 <?php
-
+$tmpId = $this->work[0]['id_job'];
+$seconds = 0;
+$earnings = 0;
 foreach($this->work as $dela) : ?>
+
+    <?php
+     if($tmpId !== $dela['id_job']) : ?>
+    <tr class="last">
+	<td colspan="6" class="left"></td>
+
+        <td class="vsota">Σ: <?php echo sprintf( "%02.2d:%02.2d", floor( $seconds / 3600 ), floor(($seconds % 3600)/60)); ?></td>
+        <td class="vsota right">Σ: <?php echo $this->currencyFormat($earnings) ?></td>
+    </tr>
+    <?php $seconds = 0; $earnings = 0; $tmpId = $dela['id_job']; endif; 
+
+
+     $seconds += $dela['seconds'];
+     $earnings += $dela['earnings'];
+
+    ?>
+
 <tr>
+
     <td class="left"><input type="checkbox" name="stat[]" value="<?php echo $dela['id'];?>" checked="checked" class="check"  /></td>
     <td title="<?php echo ($dela['date_added']);?>"><?php echo $this->dateFormat($dela['date']);?></td>
     <td><?php echo ($dela['name']);?></td>
@@ -36,8 +56,8 @@ foreach($this->work as $dela) : ?>
 <tr class="last">
     <td colspan="6" class="left"><input type="submit" value="Obračunaj izbrane" /></td>
 
-    <td class="vsota">Σ: <?php echo ($this->sum_work) ?></td>
-    <td class="vsota right">Σ: <?php echo $this->currencyFormat($this->sum_earnings) ?></td>
+    <td class="vsota">Σ: <?php printf( "%02.2d:%02.2d", floor( $seconds / 3600 ), floor(($seconds % 3600)/60));?></td>
+    <td class="vsota right">Σ: <?php echo $this->currencyFormat($earnings) ?></td>
 </tr>
 </table>
 </form>
